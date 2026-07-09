@@ -1,0 +1,152 @@
+import React, { useRef, useEffect } from 'react';
+
+const projects = [
+  {
+    id: 1,
+    title: 'Personal Portfolio',
+    desc: 'This site — a personal portfolio built with React, JavaScript, Tailwind CSS, and HTML.',
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'HTML'],
+    // Served from public/images — spaces URL-encoded.
+    image: '/images/Screenshot%202026-07-07%20154315.png',
+    accent: 'from-cyan-400 to-violet-500',
+    border: 'hover:border-cyan-400/40',
+    demo: null,
+    code: null,
+  },
+  {
+    id: 2,
+    title: 'E-Commerce Website',
+    desc: 'An e-commerce web app built with React, JavaScript, Tailwind CSS, and HTML.',
+    tags: ['React', 'JavaScript', 'Tailwind CSS', 'HTML'],
+    image: '/images/Screenshot%202024-04-14%20204856.png',
+    accent: 'from-amber-400 to-orange-500',
+    border: 'hover:border-amber-400/40',
+    demo: null,
+    code: 'https://github.com/AviKirkat/E-CommersWebsite',
+  },
+];
+
+function ProjectCard({ project }) {
+  const hasLinks = project.demo || project.code;
+
+  return (
+    <div
+      className={`group relative bg-white/[0.03] border border-white/10 ${project.border} rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-900/20`}
+    >
+      {/* Top gradient band */}
+      <div
+        className={`absolute inset-x-0 top-0 h-0.5 rounded-t-2xl bg-gradient-to-r ${project.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+      />
+
+      {/* Screenshot preview */}
+      <div className="h-44 rounded-xl mb-5 overflow-hidden border border-white/5 bg-white/5">
+        <img
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
+
+      <h3 className="text-white font-semibold text-lg mb-2">{project.title}</h3>
+      <p className="text-slate-400 text-sm leading-relaxed mb-4">{project.desc}</p>
+
+      {/* Tags */}
+      <div className="flex flex-wrap gap-2 mb-5">
+        {project.tags.map((tag) => (
+          <span
+            key={tag}
+            className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Links */}
+      {hasLinks && (
+        <div className="flex gap-3">
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className={`flex-1 text-center py-2 rounded-xl text-sm font-medium text-white bg-gradient-to-r ${project.accent} hover:opacity-90 transition-opacity`}
+            >
+              Live Demo
+            </a>
+          )}
+          {project.code && (
+            <a
+              href={project.code}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 text-center py-2 rounded-xl text-sm font-medium text-slate-300 border border-white/15 hover:border-white/30 transition-colors"
+            >
+              Source Code
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Projects() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const cards = el.querySelectorAll('.proj-card');
+    cards.forEach((card) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          cards.forEach((card, i) => {
+            card.style.transitionDelay = `${i * 100}ms`;
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section id="projects" className="relative py-28 bg-[#070714] overflow-hidden">
+      <div className="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-violet-700/10 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-6" ref={sectionRef}>
+        {/* Header */}
+        <div className="text-center mb-12">
+          <p className="text-cyan-400 text-sm font-mono tracking-widest uppercase mb-3">My Work</p>
+          <h2 className="text-4xl font-bold text-white">
+            Featured{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h2>
+        </div>
+
+        {/* Cards grid */}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div key={project.id} className="proj-card">
+              <ProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Projects;
