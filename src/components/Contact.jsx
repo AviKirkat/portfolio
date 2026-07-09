@@ -37,6 +37,8 @@ const socials = [
 ];
 
 function Contact() {
+  const year = new Date().getFullYear();
+
   return (
     <section id="contact" className="relative py-20 sm:py-28 bg-[#05050f] overflow-hidden">
       {/* Orbs */}
@@ -110,6 +112,17 @@ function Contact() {
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <footer className="mt-16 sm:mt-20 pt-8 border-t border-white/10 text-center">
+          <p className="text-slate-500 text-xs sm:text-sm">
+            © {year} Avinash Kirkat. All rights reserved.
+          </p>
+          <p className="text-slate-600 text-[11px] sm:text-xs mt-2 max-w-xl mx-auto leading-relaxed">
+            This is a personal portfolio site. Content, projects, and opinions shared here
+            are my own and do not represent any past or present employer.
+          </p>
+        </footer>
       </div>
     </section>
   );

@@ -3,15 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 // Replace with your real photo import/path, e.g. import photo from '../images/photo.png';
 const PHOTO_SRC = '/images/photo.png';
 
-const skills = [
-  { name: 'JavaScript', level: 85 },
-  { name: 'ReactJS', level: 80 },
-  { name: 'Core Java', level: 75 },
-  { name: 'MySQL', level: 78 },
-  { name: 'HTML5', level: 90 },
-  { name: 'CSS', level: 88 },
-];
-
 const education = [
   {
     year: '2018',
@@ -77,28 +68,6 @@ function Reveal({ children, delay = 0, className = '' }) {
   );
 }
 
-function SkillBar({ name, level, inView, delay }) {
-  return (
-    <div className="group">
-      <div className="flex items-baseline justify-between mb-1.5 font-mono text-xs">
-        <span className="text-slate-300 tracking-wide group-hover:text-cyan-300 transition-colors">
-          {name}
-        </span>
-        <span className="text-slate-500">{level}%</span>
-      </div>
-      <div className="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-amber-400 via-cyan-400 to-violet-500"
-          style={{
-            width: inView ? `${level}%` : '0%',
-            transition: `width 1s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 function TimelineItem({ item, isLast, inView, delay }) {
   return (
     <div className="relative pl-8">
@@ -126,7 +95,6 @@ function TimelineItem({ item, isLast, inView, delay }) {
 }
 
 function About() {
-  const [skillsRef, skillsInView] = useInView(0.3);
   const [timelineRef, timelineInView] = useInView(0.2);
   const [photoRef, photoInView] = useInView(0.3);
 
@@ -195,7 +163,7 @@ function About() {
           <div className="space-y-14">
             <Reveal delay={150}>
               <p className="text-slate-400 text-lg leading-relaxed">
-                I graduated as a Mechanical Engineer in 2022, but the precision and
+                I graduated as a Mechanical Engineer, but the precision and
                 problem-solving I learned on the drafting table pulled me toward
                 Software. After completing PG-DAC at C-DAC at Pune, I now build with{' '}
                 <span className="text-cyan-400">React JS</span>, {' '}
@@ -209,7 +177,6 @@ function About() {
                 discipline to every interface I ship.
               </p>
             </Reveal>
-
 
             {/* Education timeline */}
             <Reveal delay={250}>
