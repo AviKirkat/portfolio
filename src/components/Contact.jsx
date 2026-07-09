@@ -33,7 +33,7 @@ const socials = [
   { label: 'GitHub', href: 'https://github.com/AviKirkat', Icon: GithubIcon },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/avinash-kirkat/', Icon: LinkedinIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/', Icon: InstagramIcon },
-  { label: 'Email', href: 'mailto:avikirkat5787@gmail.com', Icon: Mail },
+  { label: 'Email', href: 'mailto:avikirkat5787@gmail.com?subject=Let%27s%20Connect', Icon: Mail },
 ];
 
 function Contact() {

@@ -18,21 +18,20 @@ const projects = [
     id: 2,
     title: 'Personal Portfolio',
     type: 'Personal Project',
-    desc: 'This site — a personal portfolio built with React, JavaScript, Tailwind CSS, and HTML.',
+    desc: 'This site — a fully responsive Personal Portfolio built from scratch with React, JavaScript, Tailwind CSS, and HTML5. Features scroll-triggered animations, a mobile-friendly nav, and sections for skills, experience.',
     tags: ['React Js', 'JavaScript', 'Tailwind CSS', 'HTML5'],
     // Served from public/images — spaces URL-encoded.
     image: '/images/Screenshot%202026-07-07%20154315.png',
     accent: 'from-cyan-400 to-violet-500',
     border: 'hover:border-cyan-400/40',
-    demo: null,
+    demo: 'https://avi-kirkat1003.netlify.app/',
     code: 'https://github.com/AviKirkat/portfolio.git',
   },
   {
     id: 3,
     title: 'E-Commerce Website',
     type: 'Personal Project',
-    desc: 'An e-commerce web app built with React, JavaScript, Tailwind CSS, and HTML.',
-    tags: ['React Js', 'JavaScript', 'CSS', 'HTML5'],
+    desc: 'A full-featured e-commerce web app built with React, JavaScript, CSS, and HTML5 — includes product listings, a shopping cart, and a responsive checkout flow designed for a smooth shopping experience across devices.', tags: ['React Js', 'JavaScript', 'CSS', 'HTML5'],
     image: '/images/Screenshot%202024-04-14%20204856.png',
     accent: 'from-amber-400 to-orange-500',
     border: 'hover:border-amber-400/40',
@@ -46,19 +45,19 @@ function ProjectCard({ project }) {
 
   return (
     <div
-      className={`group relative bg-white/[0.03] border border-white/10 ${project.border} rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-900/20`}
+      className={`group relative h-full flex flex-col bg-white/[0.03] border border-white/10 ${project.border} rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-900/20`}
     >
       {/* Top gradient band */}
       <div
         className={`absolute inset-x-0 top-0 h-0.5 rounded-t-2xl bg-gradient-to-r ${project.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
       />
 
-      {/* Screenshot preview */}
-      <div className="relative h-44 rounded-xl mb-5 overflow-hidden border border-white/5 bg-white/5">
+      {/* Screenshot preview — fixed height, cropped not stretched */}
+      <div className="relative h-44 shrink-0 rounded-xl mb-5 overflow-hidden border border-white/5 bg-white/5">
         <img
           src={project.image}
           alt={`${project.title} screenshot`}
-          className="w-full h-full object-fill object-top"
+          className="w-full h-full object-cover object-top"
         />
         {/* type badge */}
         <span
@@ -86,9 +85,12 @@ function ProjectCard({ project }) {
         ))}
       </div>
 
+      {/* Spacer pushes links to the bottom so every card's footer lines up */}
+      <div className="grow" />
+
       {/* Links */}
       {hasLinks && (
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-auto">
           {project.demo && (
             <a
               href={project.demo}
@@ -160,10 +162,13 @@ function Projects() {
           </h2>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cards grid — items-stretch + h-full on the card makes every
+            card in a row match the tallest one, and each grid track is
+            an equal fraction of the row width, so cards are uniform
+            both in height and width on desktop. */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {projects.map((project) => (
-            <div key={project.id} className="proj-card">
+            <div key={project.id} className="proj-card h-full">
               <ProjectCard project={project} />
             </div>
           ))}
