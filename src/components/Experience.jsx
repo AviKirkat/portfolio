@@ -12,7 +12,7 @@ const roles = [
     title: 'Software Engineer',
     type: 'Full-time',
     period: 'Mar 2026 — Present',
-    duration: '5 mos',
+    duration: null,
     current: true,
   },
   {

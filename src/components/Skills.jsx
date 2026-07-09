@@ -16,10 +16,11 @@ const skillGroups = [
     category: 'Backend',
     accent: 'from-violet-500 to-fuchsia-500',
     skills: [
-      { name: 'Java', level: 75 },
+      { name: 'Java', level: 50 },
+      { name: 'MySQL', level: 80 },
       { name: 'Spring Boot', level: 65 },
       { name: 'REST APIs', level: 72 },
-      { name: 'MySQL', level: 78 },
+      
     ],
   },
   {

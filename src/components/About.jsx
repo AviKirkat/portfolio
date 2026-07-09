@@ -185,7 +185,7 @@ function About() {
               <div className="mt-5 text-center md:text-left">
                 <h3 className="text-xl font-bold text-slate-100">Avinash Kirkat</h3>
                 <p className="text-slate-500 font-mono text-xs tracking-wide mt-1">
-                  Mechanical Engineer → Full-Stack Developer
+                  Mechanical Engineer → Software Developer
                 </p>
               </div>
             </div>
@@ -195,14 +195,14 @@ function About() {
           <div className="space-y-14">
             <Reveal delay={150}>
               <p className="text-slate-400 text-lg leading-relaxed">
-                I graduated as a mechanical engineer in 2022, but the precision and
+                I graduated as a Mechanical Engineer in 2022, but the precision and
                 problem-solving I learned on the drafting table pulled me toward
-                software. After completing PG-DAC at C-DAC, I now build with{' '}
-                <span className="text-cyan-400">ReactJS</span>, {' '}
+                Software. After completing PG-DAC at C-DAC at Pune, I now build with{' '}
+                <span className="text-cyan-400">React JS</span>, {' '}
                 <span className="text-cyan-400">JavaScript</span>, {' '}
                 <span className="text-cyan-400">HTML5</span>, {' '}
                 <span className="text-cyan-400">CSS</span>, {' '}and{' '}
-                <span className="text-cyan-400">Core Java</span>, backed by{' '}
+                <span className="text-cyan-400">Core Java</span>, backend by{' '}
                 <span className="text-cyan-400">Java</span>, {' '}
                 <span className="text-cyan-400">Spring Boot</span>, and{' '}
                 <span className="text-cyan-400">MySQL</span> — bringing an engineer's

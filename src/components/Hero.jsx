@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const roles = ['Mechanical Engineer', 'Full-Stack Developer', 'React Developer'];
+const roles = ['Mechanical Engineer', 'Software Developer', 'React JS Developer'];
 
 const chips = [
   { label: 'JavaScript', top: '4%', left: '2%', delay: '0s' },
-  { label: 'ReactJS', top: '16%', left: '66%', delay: '0.6s' },
+  { label: 'React JS', top: '16%', left: '66%', delay: '0.6s' },
   { label: 'Core Java', top: '70%', left: '0%', delay: '1.1s' },
   { label: 'MySQL', top: '82%', left: '60%', delay: '1.6s' },
 ];
@@ -174,9 +174,9 @@ function Hero() {
           </h2>
 
           <p className="text-slate-400 text-base sm:text-lg max-w-xl mb-8 sm:mb-10 leading-relaxed">
-            A 2022 mechanical engineering graduate who traded blueprints for
+            A mechanical engineering graduate who traded blueprints for
             brackets. I bring an engineer's precision to building clean,
-            reliable web experiences with JavaScript, React, and Java.
+            reliable web experiences with JavaScript, React JS, and Java.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-10 sm:mb-12">

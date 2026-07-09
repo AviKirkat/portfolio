@@ -3,21 +3,36 @@ import React, { useRef, useEffect } from 'react';
 const projects = [
   {
     id: 1,
+    title: 'WellKnora',
+    type: 'Professional Work',
+    desc: 'A platform for coaching, preschool, and daycare services focused on skill development — built and shipped as professional client work.',
+    tags: ['React Js', 'Java', 'Spring Boot', 'MySql', 'JavaScript', 'Tailwind CSS', 'HTML5'],
+    // Replace with an actual WellKnora screenshot in public/images.
+    image: 'images/Screenshot 2026-07-09 105253.png',
+    accent: 'from-emerald-400 to-cyan-500',
+    border: 'hover:border-emerald-400/40',
+    demo: 'https://www.wellknora.com/',
+    code: null,
+  },
+  {
+    id: 2,
     title: 'Personal Portfolio',
+    type: 'Personal Project',
     desc: 'This site — a personal portfolio built with React, JavaScript, Tailwind CSS, and HTML.',
-    tags: ['React', 'JavaScript', 'Tailwind CSS', 'HTML'],
+    tags: ['React Js', 'JavaScript', 'Tailwind CSS', 'HTML5'],
     // Served from public/images — spaces URL-encoded.
     image: '/images/Screenshot%202026-07-07%20154315.png',
     accent: 'from-cyan-400 to-violet-500',
     border: 'hover:border-cyan-400/40',
     demo: null,
-    code: null,
+    code: 'https://github.com/AviKirkat/portfolio.git',
   },
   {
-    id: 2,
+    id: 3,
     title: 'E-Commerce Website',
+    type: 'Personal Project',
     desc: 'An e-commerce web app built with React, JavaScript, Tailwind CSS, and HTML.',
-    tags: ['React', 'JavaScript', 'Tailwind CSS', 'HTML'],
+    tags: ['React Js', 'JavaScript', 'CSS', 'HTML5'],
     image: '/images/Screenshot%202024-04-14%20204856.png',
     accent: 'from-amber-400 to-orange-500',
     border: 'hover:border-amber-400/40',
@@ -39,12 +54,21 @@ function ProjectCard({ project }) {
       />
 
       {/* Screenshot preview */}
-      <div className="h-44 rounded-xl mb-5 overflow-hidden border border-white/5 bg-white/5">
+      <div className="relative h-44 rounded-xl mb-5 overflow-hidden border border-white/5 bg-white/5">
         <img
           src={project.image}
           alt={`${project.title} screenshot`}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-fill object-top"
         />
+        {/* type badge */}
+        <span
+          className={`absolute top-4 right-2 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider backdrop-blur-sm border ${project.type === 'Professional Work'
+            ? 'bg-slate-900 text-white border-emerald-400/30'
+            : 'bg-slate-800 text-white border-white/20'
+            }`}
+        >
+          {project.type}
+        </span>
       </div>
 
       <h3 className="text-white font-semibold text-lg mb-2">{project.title}</h3>
@@ -124,7 +148,7 @@ function Projects() {
     <section id="projects" className="relative py-28 bg-[#070714] overflow-hidden">
       <div className="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-violet-700/10 blur-[120px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-6" ref={sectionRef}>
+      <div className="max-w-5xl mx-auto px-6" ref={sectionRef}>
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-cyan-400 text-sm font-mono tracking-widest uppercase mb-3">My Work</p>
@@ -137,7 +161,7 @@ function Projects() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <div key={project.id} className="proj-card">
               <ProjectCard project={project} />
