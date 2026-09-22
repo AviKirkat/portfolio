@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const company = {
   name: 'HealthPlanet Edutech',
-  duration: '8 mos',
   location: 'Pune City, Maharashtra, India',
   mode: 'On-site',
 };
@@ -11,14 +10,14 @@ const roles = [
   {
     title: 'Software Engineer',
     type: 'Full-time',
-    period: 'Mar 2026 — Present',
+    period: 'DEC 2025 — Present*',
     duration: null,
     current: true,
   },
   {
     title: 'Junior Software Engineer',
     type: 'Internship',
-    period: 'Dec 2025 — Feb 2026',
+    period: 'SEP 2025 — NOV 2026',
     duration: '3 mos',
     current: false,
   },
