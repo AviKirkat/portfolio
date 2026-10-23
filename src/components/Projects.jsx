@@ -11,7 +11,7 @@ const projects = [
     image: 'images/Screenshot 2026-07-09 105253.png',
     accent: 'from-emerald-400 to-cyan-500',
     border: 'hover:border-emerald-400/40',
-    demo: 'https://www.wellknora.com/',
+    demo: 'https://www.wellknoraschools.com/',
     code: null,
   },
   {

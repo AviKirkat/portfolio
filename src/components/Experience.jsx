@@ -11,14 +11,12 @@ const roles = [
     title: 'Software Engineer',
     type: 'Full-time',
     period: 'DEC 2025 — Present*',
-    duration: null,
     current: true,
   },
   {
     title: 'Junior Software Engineer',
     type: 'Internship',
-    period: 'SEP 2025 — NOV 2026',
-    duration: '3 mos',
+    period: 'SEP 2025 — NOV 2025',
     current: false,
   },
 ];
@@ -80,7 +78,7 @@ function RoleItem({ role, isLast, inView, delay }) {
       </div>
       <p className="text-slate-500 text-xs sm:text-sm mb-1">{role.type}</p>
       <p className="font-mono text-[11px] sm:text-xs text-amber-400/80">
-        {role.period} · {role.duration}
+        {role.period}
       </p>
     </div>
   );

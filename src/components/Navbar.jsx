@@ -10,6 +10,8 @@ const links = [
   { href: '#contact', label: 'Contact' },
 ];
 
+const RESUME_URL = '/pdf/Avinash_Kirkat_Fullstack_Developer.pdf';
+
 function Navbar() {
   const [active, setActive] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -48,11 +50,10 @@ function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-[#0a0a1a]/90 backdrop-blur-xl shadow-lg shadow-violet-900/20 border-b border-white/5'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled
+          ? 'bg-[#0a0a1a]/90 backdrop-blur-xl shadow-lg shadow-violet-900/20 border-b border-white/5'
+          : 'bg-transparent'
+          }`}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
           {/* Logo */}
@@ -67,7 +68,7 @@ function Navbar() {
           </a>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-9">
+          <ul className="hidden ml-32 md:flex items-center gap-9">
             {links.map(({ href, label }) => {
               const isActive = active === href.slice(1);
               return (
@@ -75,9 +76,8 @@ function Navbar() {
                   <a
                     href={href}
                     onClick={(e) => handleNav(e, href)}
-                    className={`relative text-sm font-medium tracking-wide transition-colors duration-300 pb-2 ${
-                      isActive ? 'text-cyan-400' : 'text-slate-400 hover:text-white'
-                    }`}
+                    className={`relative text-sm font-medium tracking-wide transition-colors duration-300 pb-2 ${isActive ? 'text-cyan-400' : 'text-slate-400 hover:text-white'
+                      }`}
                   >
                     {label}
                     {/* dimension-tick active indicator */}
@@ -94,6 +94,24 @@ function Navbar() {
             })}
           </ul>
 
+          {/* Resume download (desktop) */}
+          <a
+            href={RESUME_URL}
+            download="Avinash_Kirkat_Fullstack_Developer.pdf"
+            className="hidden md:inline-flex items-center gap-2 rounded-lg border border-cyan-400/50 px-4 py-2 text-sm font-medium text-cyan-400 transition-all duration-300 hover:bg-cyan-400/10 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+            </svg>
+            Resume
+          </a>
           {/* Hamburger */}
           <button
             className="md:hidden relative z-[60] flex flex-col gap-1.5 p-2"
@@ -101,19 +119,16 @@ function Navbar() {
             aria-label="Toggle menu"
           >
             <span
-              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${
-                menuOpen ? 'rotate-45 translate-y-2 bg-cyan-400' : ''
-              }`}
+              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2 bg-cyan-400' : ''
+                }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${
-                menuOpen ? 'opacity-0' : ''
-              }`}
+              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''
+                }`}
             />
             <span
-              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${
-                menuOpen ? '-rotate-45 -translate-y-2 bg-cyan-400' : ''
-              }`}
+              className={`block h-0.5 w-6 bg-slate-200 transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2 bg-cyan-400' : ''
+                }`}
             />
           </button>
         </div>
@@ -121,9 +136,8 @@ function Navbar() {
 
       {/* Mobile slide-in panel */}
       <div
-        className={`md:hidden fixed inset-0 z-50 transition-opacity duration-300 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`md:hidden fixed inset-0 z-50 transition-opacity duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         {/* backdrop */}
         <div
@@ -133,9 +147,8 @@ function Navbar() {
 
         {/* panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-72 max-w-[80%] bg-[#0a0a1a] border-l border-white/10 pt-24 px-8 transition-transform duration-400 ease-out ${
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`absolute top-0 right-0 h-full w-72 max-w-[80%] bg-[#0a0a1a] border-l border-white/10 pt-24 px-8 transition-transform duration-400 ease-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
         >
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-amber-400/50 via-cyan-400/50 to-violet-500/50" />
           <ul className="flex flex-col gap-2">
@@ -154,9 +167,8 @@ function Navbar() {
                   <a
                     href={href}
                     onClick={(e) => handleNav(e, href)}
-                    className={`flex items-center gap-3 py-3 text-base font-medium border-b border-white/5 ${
-                      isActive ? 'text-cyan-400' : 'text-slate-300'
-                    }`}
+                    className={`flex items-center gap-3 py-3 text-base font-medium border-b border-white/5 ${isActive ? 'text-cyan-400' : 'text-slate-300'
+                      }`}
                   >
                     <span className="font-mono text-xs text-amber-400/70">
                       0{i + 1}
@@ -167,6 +179,14 @@ function Navbar() {
               );
             })}
           </ul>
+          <a
+            href={RESUME_URL}
+            download="Avinash_Kirkat_Fullstack_Developer.pdf"
+            onClick={() => setMenuOpen(false)}
+            className="mt-8 flex items-center justify-center gap-2 rounded-lg border border-cyan-400/50 py-3 text-sm font-medium text-cyan-400 hover:bg-cyan-400/10"
+          >
+            Download Resume
+          </a>
         </div>
       </div>
     </>

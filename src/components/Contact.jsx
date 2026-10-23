@@ -1,5 +1,7 @@
 import React from 'react';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Download } from 'lucide-react';
+
+const RESUME_URL = '/pdf/Avinash_Kirkat_Fullstack_Developer.pdf';
 
 // Brand icons as inline SVGs — recent lucide-react versions dropped
 // logo/brand icons (GitHub, LinkedIn, Instagram, etc.) entirely.
@@ -78,13 +80,24 @@ function Contact() {
                 <span className="w-9 h-9 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
                   <Mail className="w-4 h-4" />
                 </span>
-                <span className="break-all">avikirkat5787@gmail.com</span>
+                <a
+                  href="mailto:avikirkat5787@gmail.com"
+                  className="break-all transition-colors duration-300 hover:text-cyan-400"
+                >
+                  avikirkat5787@gmail.com
+                </a>
               </p>
+
               <p className="text-slate-400 text-sm flex items-center gap-3">
                 <span className="w-9 h-9 shrink-0 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400">
                   <Phone className="w-4 h-4" />
                 </span>
-                +91 86989 65787
+                <a
+                  href="tel:+918698965787"
+                  className="transition-colors duration-300 hover:text-cyan-400"
+                >
+                  +91 86989 65787
+                </a>
               </p>
             </div>
           </div>
@@ -111,6 +124,24 @@ function Contact() {
               })}
             </div>
           </div>
+        </div>
+
+        {/* Resume card */}
+        <div className="max-w-2xl mx-auto mt-6 sm:mt-8 bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+          <div>
+            <h3 className="text-white font-semibold mb-1">My Resume</h3>
+            <p className="text-slate-400 text-sm">
+              Want the full picture? Download my resume as a PDF.
+            </p>
+          </div>
+          <a
+            href={RESUME_URL}
+            download="Avinash_Kirkat_Fullstack_Developer.pdf"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-cyan-500 to-violet-600 hover:scale-105 active:scale-95 transition-transform duration-200 shadow-xl shadow-violet-700/40"
+          >
+            <Download className="w-4 h-4" />
+            Download Resume
+          </a>
         </div>
 
         {/* Footer */}
